@@ -1,4 +1,3 @@
-// Initialize Anime.js timeline
 const timeline = anime.timeline({
     autoplay: false, // Ensure the timeline does not autoplay
     easing: 'linear',
@@ -23,15 +22,10 @@ timeline.add({
     opacity: 1,
 })
 
-// Function to handle mouse wheel events
-const handleWheel = (event) => {
-    // event.preventDefault();
-
+// Function to handle scroll events
+const handleScroll = (scrollAmount) => {
     const maxScrollValue = 5000; // max scroll
 
-    // Calculate the scroll based on the wheel
-    const scrollAmount = event.deltaY;
-    
     // Get the current scroll value from data attribute or initialize it
     let currentScrollValue = parseFloat(document.documentElement.dataset.scrollValue) || 0;
 
@@ -51,10 +45,34 @@ const handleWheel = (event) => {
     timeline.seek(timelineProgress);
 };
 
-// Add mouse wheel event listener
+// Mouse wheel event listener
+const handleWheel = (event) => {
+    handleScroll(event.deltaY);
+};
+
+// Variables to track touch events
+let touchStartY = 0;
+let touchEndY = 0;
+
+// Touch start event listener
+const handleTouchStart = (event) => {
+    touchStartY = event.touches[0].clientY;
+};
+
+// Touch move event listener
+const handleTouchMove = (event) => {
+    touchEndY = event.touches[0].clientY;
+    const touchDeltaY = touchStartY - touchEndY;
+    handleScroll(touchDeltaY);
+    touchStartY = touchEndY; // Update start Y to current Y for continuous scrolling
+};
+
+// Add event listeners
 document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
 
-    // Initial call to handleWheel to set the correct animation state on page load
-    handleWheel({ deltaY: 0 }); // Call with initial value to set up the state
+    // Initial call to handleScroll to set the correct animation state on page load
+    handleScroll(0); // Call with initial value to set up the state
 });
