@@ -1,7 +1,18 @@
+// Initialize Anime.js timeline
 const timeline = anime.timeline({
     autoplay: false, // Ensure the timeline does not autoplay
     easing: 'linear',
-    duration: 500 // Total duration for the animation
+    duration: 1000 // Total duration for the animation
+});
+
+// Add initial state for the welcome screen to be hidden
+timeline.add({
+    targets: '#welcome',
+    opacity: 0,
+    duration: 1,
+    begin: function(anim) {
+        anim.animatables[0].target.style.display = 'none';
+    }
 });
 
 // Add animation to the timeline
@@ -9,22 +20,35 @@ timeline.add({
     targets: '#progress-bar',
     width: '100%',
     duration: 500 // Duration of the specific animation
-})
+});
+
 // Add animation to the timeline
 timeline.add({
     targets: '#loading',
-    opacity: 0,
+    opacity: [1, 0],
     scale: [1, 0.5], // Zoom out to 50%
-})
+    duration: 500, // Duration of the specific animation
+    complete: function(anim) {
+        anim.animatables[0].target.style.display = 'none';
+    }
+});
+
+// Add animation to the timeline for welcome screen
 timeline.add({
     targets: '#welcome',
-    display: 'block',
-    opacity: 1,
-})
+    opacity: [0, 1],
+    duration: 500, // Duration of the specific animation
+    begin: function(anim) {
+        anim.animatables[0].target.style.display = 'block';
+    }
+});
 
-// Function to handle scroll events
-const handleScroll = (scrollAmount) => {
-    const maxScrollValue = 5000; // max scroll
+// Function to handle mouse wheel events
+const handleWheel = (event) => {
+    const maxScrollValue = 2000; // max scroll
+
+    // Calculate the scroll based on the wheel
+    const scrollAmount = event.deltaY;
 
     // Get the current scroll value from data attribute or initialize it
     let currentScrollValue = parseFloat(document.documentElement.dataset.scrollValue) || 0;
@@ -45,11 +69,6 @@ const handleScroll = (scrollAmount) => {
     timeline.seek(timelineProgress);
 };
 
-// Mouse wheel event listener
-const handleWheel = (event) => {
-    handleScroll(event.deltaY);
-};
-
 // Variables to track touch events
 let touchStartY = 0;
 let touchEndY = 0;
@@ -63,7 +82,7 @@ const handleTouchStart = (event) => {
 const handleTouchMove = (event) => {
     touchEndY = event.touches[0].clientY;
     const touchDeltaY = touchStartY - touchEndY;
-    handleScroll(touchDeltaY);
+    handleWheel({ deltaY: touchDeltaY });
     touchStartY = touchEndY; // Update start Y to current Y for continuous scrolling
 };
 
@@ -73,6 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchstart', handleTouchStart);
     window.addEventListener('touchmove', handleTouchMove);
 
-    // Initial call to handleScroll to set the correct animation state on page load
-    handleScroll(0); // Call with initial value to set up the state
+    // Initial call to handleWheel to set the correct animation state on page load
+    handleWheel({ deltaY: 0 }); // Call with initial value to set up the state
 });
