@@ -554,6 +554,10 @@ video {
   --tw-contain-style:  ;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -634,6 +638,10 @@ video {
 
 .gap-12 {
   gap: 3rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-full {

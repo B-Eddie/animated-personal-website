@@ -1,47 +1,60 @@
-// Initialize Anime.js timeline
 const timeline = anime.timeline({
     autoplay: false, // Ensure the timeline does not autoplay
     easing: 'linear',
-    duration: 1000 // Total duration for the animation
+    duration: 1500 // Total duration for the animation
 });
 
-// Add initial state for the welcome screen to be hidden
 timeline.add({
-    targets: '#welcome',
-    opacity: 0,
+    targets: 'body',
     duration: 1,
     begin: function(anim) {
-        anim.animatables[0].target.style.display = 'none';
+        anim.animatables[0].target.classList.add('overflow-hidden');
     }
-});
-
-// Add animation to the timeline
-timeline.add({
+}).add({ 
+    // Add initial state for the welcome screen to be hidden
+    targets: '#welcome',
+    duration: 1,
+    begin: function(anim) {
+        anim.animatables[0].target.classList.remove('block');
+        anim.animatables[0].target.classList.add('hidden');
+    }
+}).add({ 
+    // Add animation to the timeline
     targets: '#progress-bar',
+    duration: 500, // Duration of the specific animation
     width: '100%',
-    duration: 500 // Duration of the specific animation
-});
-
-// Add animation to the timeline
-timeline.add({
+}).add({ 
+    // Add zooming out animation to the timeline
+    
     targets: '#loading',
     opacity: [1, 0],
     scale: [1, 0.5], // Zoom out to 50%
     duration: 500, // Duration of the specific animation
+    begin: function(anim) {
+        console.log("HI")
+    },
     complete: function(anim) {
-        anim.animatables[0].target.style.display = 'none';
+        console.log("check")
+        if (anim.animatables[0].target.classList.contains('flex')) {
+            console.log('removing flex');
+            anim.animatables[0].target.classList.remove('flex');
+            anim.animatables[0].target.classList.add('hidden');
+        } else {
+            console.log('removing hidden');
+            anim.animatables[0].target.classList.remove('hidden')
+            anim.animatables[0].target.classList.add('flex');
+        }
     }
-});
-
-// Add animation to the timeline for welcome screen
-timeline.add({
+}).add({ 
+    // Add animation to the timeline for the welcome screen to appear
     targets: '#welcome',
     opacity: [0, 1],
     duration: 500, // Duration of the specific animation
     begin: function(anim) {
-        anim.animatables[0].target.style.display = 'block';
+        anim.animatables[0].target.classList.remove('hidden');
+        anim.animatables[0].target.classList.add('block');
     }
-});
+})
 
 // Function to handle mouse wheel events
 const handleWheel = (event) => {
