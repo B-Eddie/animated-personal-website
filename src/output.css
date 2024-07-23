@@ -554,8 +554,12 @@ video {
   --tw-contain-style:  ;
 }
 
-.visible {
-  visibility: visible;
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-2 {

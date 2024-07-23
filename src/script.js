@@ -25,10 +25,9 @@ timeline.add({
     width: '100%',
 }).add({ 
     // Add zooming out animation to the timeline
-    
     targets: '#loading',
-    opacity: [1, 0],
-    scale: [1, 0.5], // Zoom out to 50%
+    opacity: 0,
+    scale: 0.5, // Zoom out to 50%
     duration: 500, // Duration of the specific animation
     begin: function(anim) {
         console.log("HI")
@@ -54,7 +53,7 @@ timeline.add({
         anim.animatables[0].target.classList.remove('hidden');
         anim.animatables[0].target.classList.add('block');
     }
-})
+});
 
 // Function to handle mouse wheel events
 const handleWheel = (event) => {
@@ -73,13 +72,20 @@ const handleWheel = (event) => {
     document.documentElement.dataset.scrollValue = currentScrollValue;
 
     // Calculate the scroll percentage
-    const scrollPercentage = Math.min(currentScrollValue / maxScrollValue, 1);
+    const scrollPercentage = (currentScrollValue / maxScrollValue) * 100;
 
-    // Calculate the timeline progress based on scroll percentage
-    const timelineProgress = scrollPercentage * timeline.duration;
+    const loading = document.getElementById('loading');
+    const welcome = document.getElementById('welcome');
 
-    // Seek the timeline based on the calculated progress
-    timeline.seek(timelineProgress);
+    if (scrollPercentage >= 70) {
+        loading.classList.add('hidden');
+        welcome.classList.remove('hidden');
+        welcome.classList.add('block');
+    } else {
+        loading.classList.remove('hidden');
+        loading.classList.add('flex');
+    }
+    timeline.seek((scrollPercentage / 100) * timeline.duration);
 };
 
 // Variables to track touch events
