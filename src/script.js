@@ -29,6 +29,66 @@ timeline.add({
     duration: 500, // Duration of the specific animation
 });
 
+
+const words = ["Developer", "Designer", "Student"];
+let i = 0;
+let run = false;
+let timer;
+
+function typingEffect() {
+    if (run) {
+        return;
+    }
+    let split_word = words[i].split("");
+    var loopTyping = function(word) {
+        if (word.length > 0) {
+            document.getElementById('word').innerHTML += word.shift();
+            timer = setTimeout(() => loopTyping(word), 500);
+        } else {
+            deletingEffect();
+        }
+    };
+    loopTyping(split_word);
+    run = true;
+};
+
+function deletingEffect() {
+    let word = words[i].split("");
+    var loopDeleting = function() {
+        if (word.length > 0) {
+            word.pop();
+            document.getElementById('word').innerHTML = word.join("");
+        } else {
+            if (words.length > (i + 1)) {
+                i++;
+            } else {
+                i = 0;
+            };
+            // typingEffect();
+            if (i === words.length - 1) {
+                i = 0;
+            } else {
+                i++;
+            }
+            run = false;
+            typingEffect(words[i].split(""))
+            return false;
+        };
+        timer = setTimeout(loopDeleting, 200);
+    };
+    loopDeleting();
+};
+
+function stopTypingEffect() {
+    clearTimeout(timer);
+    run = false;
+    document.getElementById('word').innerHTML = '';
+}
+
+// Call stopTypingEffect() to stop the typing animation
+// stopTypingEffect();
+
+
 // Function to handle mouse wheel events
 const handleWheel = (event) => {
     const maxScrollValue = 2000; // max scroll
@@ -51,13 +111,20 @@ const handleWheel = (event) => {
     const loading = document.getElementById('loading');
     const welcome = document.getElementById('welcome');
 
-    if (scrollPercentage >= 70) {
-        loading.classList.add('hidden');
-        welcome.classList.remove('hidden');
-        welcome.classList.add('block');
-    } else {
+    if (scrollPercentage < 70) {
+        welcome.classList.add('hidden');
+        welcome.classList.remove('flex');
+
         loading.classList.remove('hidden');
         loading.classList.add('flex');
+    } else if (scrollPercentage >= 70 && scrollPercentage < 120) {
+        loading.classList.add('hidden');
+
+        welcome.classList.remove('hidden');
+        welcome.classList.add('flex');
+        typingEffect();
+    } else {
+        stopTypingEffect();
     }
     timeline.seek((scrollPercentage / 100) * timeline.duration);
 };
