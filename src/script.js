@@ -25,8 +25,21 @@ timeline.add({
 }).add({ 
     // Add animation to the timeline for the welcome screen to appear
     targets: '#welcome',
-    opacity: [0, 1],
-    duration: 500, // Duration of the specific animation
+    opacity: 1,
+    duration: 200, // Duration of the specific animation
+}).add({
+    duration: 500,
+}).add({
+    // welcome screen fade in
+    targets: '#welcome:not(#desktop)',
+    duration: 500,
+    // delay: 500,
+    scale: 1.5,
+}).add({
+    // ones and zeros fade in
+    targets: '#onezero',
+    offset: -500,
+    duration: 500,
 });
 
 
@@ -91,7 +104,7 @@ function stopTypingEffect() {
 
 // Function to handle mouse wheel events
 const handleWheel = (event) => {
-    const maxScrollValue = 2000; // max scroll
+    const maxScrollValue = 5000; // max scroll
 
     // Calculate the scroll based on the wheel
     const scrollAmount = event.deltaY;
@@ -106,26 +119,40 @@ const handleWheel = (event) => {
     document.documentElement.dataset.scrollValue = currentScrollValue;
 
     // Calculate the scroll percentage
-    const scrollPercentage = (currentScrollValue / maxScrollValue) * 100;
+    const total = 200;
+    const scrollPercentage = total * (((currentScrollValue / maxScrollValue)));
 
     const loading = document.getElementById('loading');
     const welcome = document.getElementById('welcome');
-
-    if (scrollPercentage < 70) {
+    
+    const onezero = document.getElementById('onezero');
+    console.log(scrollPercentage);
+    if (scrollPercentage < 40) {
+        // initial
         welcome.classList.add('hidden');
         welcome.classList.remove('flex');
 
         loading.classList.remove('hidden');
         loading.classList.add('flex');
-    } else if (scrollPercentage >= 70 && scrollPercentage < 120) {
+
+        onezero.classList.add('hidden');
+        onezero.classList.remove('block');
+    } else if (scrollPercentage >= 0 && scrollPercentage < 120) {
+        // welcome screen
         loading.classList.add('hidden');
 
         welcome.classList.remove('hidden');
         welcome.classList.add('flex');
+
+        onezero.classList.add('hidden');
+        onezero.classList.remove('block');
         typingEffect();
-    } else {
+    } else if (scrollPercentage >= 120 && scrollPercentage < 200) {
+        onezero.classList.remove('hidden');
+        onezero.classList.add('block');
         stopTypingEffect();
     }
+
     timeline.seek((scrollPercentage / 100) * timeline.duration);
 };
 

@@ -21,6 +21,9 @@ module.exports = {
       animation: {
         'move-down-up': 'move 2s infinite ease-in-out',
       },
+      fontSize: {
+        'onesixrem': '1.6rem',
+      },
     },
   },
   plugins: [],
