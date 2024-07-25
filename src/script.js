@@ -12,6 +12,10 @@ timeline.add({
     targets: '#welcome',
     duration: 1,
 }).add({ 
+    targets: '#onezero',
+    opacity: 0,
+    duration: 1,
+}).add({ 
     // Add animation to the timeline
     targets: '#progress-bar',
     duration: 500, // Duration of the specific animation
@@ -31,15 +35,22 @@ timeline.add({
     duration: 500,
 }).add({
     // welcome screen fade in
-    targets: '#welcome:not(#desktop)',
+    targets: ' #desktop, #text-animation, #onezero, #welcome-text',
     duration: 500,
     // delay: 500,
-    scale: 1.5,
+    scale: 2,
+    translateY: '5rem',    
+    opacity: 0,
+}).add({ 
+    targets: '#onezero',
+    duration: 1,
+    opacity: 0,
 }).add({
     // ones and zeros fade in
     targets: '#onezero',
-    offset: -500,
-    duration: 500,
+    // offset: -500,
+    opacity: 1,
+    duration: 300,
 });
 
 
@@ -125,7 +136,7 @@ const handleWheel = (event) => {
     const loading = document.getElementById('loading');
     const welcome = document.getElementById('welcome');
     
-    const onezero = document.getElementById('onezero');
+    // const onezero = document.getElementById('onezero');
     console.log(scrollPercentage);
     if (scrollPercentage < 40) {
         // initial
@@ -135,8 +146,8 @@ const handleWheel = (event) => {
         loading.classList.remove('hidden');
         loading.classList.add('flex');
 
-        onezero.classList.add('hidden');
-        onezero.classList.remove('block');
+        // onezero.classList.add('hidden');
+        // onezero.classList.remove('block');
     } else if (scrollPercentage >= 0 && scrollPercentage < 120) {
         // welcome screen
         loading.classList.add('hidden');
@@ -144,12 +155,12 @@ const handleWheel = (event) => {
         welcome.classList.remove('hidden');
         welcome.classList.add('flex');
 
-        onezero.classList.add('hidden');
-        onezero.classList.remove('block');
+        // onezero.classList.add('hidden');
+        // onezero.classList.remove('block');
         typingEffect();
     } else if (scrollPercentage >= 120 && scrollPercentage < 200) {
-        onezero.classList.remove('hidden');
-        onezero.classList.add('block');
+        // onezero.classList.remove('hidden');
+        // onezero.classList.add('block');
         stopTypingEffect();
     }
 
