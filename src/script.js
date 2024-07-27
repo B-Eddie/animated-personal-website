@@ -35,7 +35,7 @@ timeline.add({
     duration: 500,
 }).add({
     // welcome screen fade in
-    targets: ' #desktop, #text-animation, #onezero, #welcome-text',
+    targets: ' #desktop, #text-animation, #welcome-text',
     duration: 500,
     // delay: 500,
     scale: 2,
@@ -109,7 +109,7 @@ function stopTypingEffect() {
 }
 
 const screenWidthDivide = 30;
-const screenHeightDivide = 52;
+const screenHeightDivide = 50;
 
 function changeText() {
     const parent = document.getElementById('onezero');
@@ -140,15 +140,31 @@ function changeText() {
         }
     }
 }
+function scrambleText(input) {
+    function scrambleString(str) {
+        let array = str.split('');
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array.join('');
+    }
 
-let textChange = 0
+    const words = input.split(' ');
+    
+    const scrambledWords = words.map(word => scrambleString(word));
+    
+    return scrambledWords.join(' ');
+}
+
+
+let textChangeTrueFalse = false;
 function changeShowText() {
     const parent = document.getElementById('onezero');
-
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    console.log(screenWidth, screenHeight);
     const textArray = [];
+
     // Remove all existing children
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -162,29 +178,78 @@ function changeShowText() {
     }
 
     for (let i = 0; i < textArray.length; i++) {
+        h = false;
+
         while (textArray[i].firstChild) {
             textArray[i].removeChild(textArray[i].firstChild);
         }
         for (let j=0; j <= Math.ceil(screenWidth / screenWidthDivide); j++) {
             const newSpan = document.createElement('span');
             newSpan.innerHTML = Math.random() > 0.5 ? 1 : 0;
+            
             if (i === 1 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                console.log(j)
                 const specificSpan = document.createElement('span');
                 specificSpan.classList.add('text-greene');
-                specificSpan.innerHTML = 'About Me';
+                if (textChangeTrueFalse) {
+                    specificSpan.innerHTML = 'About Me';
+                } else {
+                    specificSpan.innerHTML = scrambleText('About Me');
+                }
                 textArray[i].appendChild(specificSpan);
-            }
-            if (i === 2 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
-                const specificSpan = document.createElement('span');
-                specificSpan.classList.add('text-greene');
-                specificSpan.innerHTML = 'This is a paragraph.';
-                textArray[i].appendChild(specificSpan);
+                h = true;
             }
             if (i === 3 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const text = "I'm a 15 year old interested in";
+                console.log(j)
                 const specificSpan = document.createElement('span');
-                specificSpan.classList.add('text-greene');
-                specificSpan.innerHTML = 'Another string.';
+                specificSpan.classList.add('text-middle-greene');
+                if (textChangeTrueFalse) {
+                    specificSpan.innerHTML = text.toString();
+                } else {
+                    specificSpan.innerHTML = scrambleText(text.toString());
+                }
                 textArray[i].appendChild(specificSpan);
+                h = true;
+            }
+            if (i === 4 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const text = "coding, design, and AI. I love";
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-middle-greene');
+                if (textChangeTrueFalse) {
+                    specificSpan.innerHTML = text.toString();
+                } else {
+                    specificSpan.innerHTML = scrambleText(text.toString());
+                }
+                textArray[i].appendChild(specificSpan);
+                h = true;
+            }
+            if (i === 5 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const text = "playing sports, coding, and";
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-middle-greene');
+                if (textChangeTrueFalse) {
+                    specificSpan.innerHTML = text.toString();
+                } else {
+                    specificSpan.innerHTML = scrambleText(text.toString());
+                }
+                textArray[i].appendChild(specificSpan);
+                h = true;
+            }
+            if (i === 6 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const text = "getting good grades";
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-middle-greene');
+                if (textChangeTrueFalse) {
+                    specificSpan.innerHTML = text.toString();
+                } else {
+                    specificSpan.innerHTML = scrambleText(text.toString());
+                }
+                textArray[i].appendChild(specificSpan);
+                h = true;
+            }
+            if (!h) {
+                newSpan.innerHTML += Math.random() > 0.5 ? 1 : 0;
             }
             textArray[i].appendChild(newSpan);
         }
@@ -208,7 +273,7 @@ const handleWheel = (event) => {
     document.documentElement.dataset.scrollValue = currentScrollValue;
 
     // Calculate the scroll percentage
-    const total = 300;
+    const total = 400;
     const scrollPercentage = total * (((currentScrollValue / maxScrollValue)));
 
     const loading = document.getElementById('loading');
@@ -236,12 +301,16 @@ const handleWheel = (event) => {
         // onezero.classList.add('hidden');
         // onezero.classList.remove('block');
         typingEffect();
-    } else if (scrollPercentage >= 120 && scrollPercentage < 160) {
+    } else if (scrollPercentage >= 120 && scrollPercentage < 140) {
         // onezero.classList.remove('hidden');
         // onezero.classList.add('block');
         changeText();
         stopTypingEffect();
-    } else if (scrollPercentage >= 160 && scrollPercentage < 250) {
+    } else if (scrollPercentage >= 140 && scrollPercentage < 220) {
+        textChangeTrueFalse = false;
+        changeShowText();
+    } else if (scrollPercentage > 219) {
+        textChangeTrueFalse = true;
         changeShowText();
     }
 
