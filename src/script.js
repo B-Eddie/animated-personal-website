@@ -48,7 +48,6 @@ timeline.add({
 }).add({
     // ones and zeros fade in
     targets: '#onezero',
-    // offset: -500,
     opacity: 1,
     duration: 300,
 });
@@ -109,9 +108,88 @@ function stopTypingEffect() {
     document.getElementById('word').innerHTML = '';
 }
 
-// Call stopTypingEffect() to stop the typing animation
-// stopTypingEffect();
+const screenWidthDivide = 30;
+const screenHeightDivide = 52;
 
+function changeText() {
+    const parent = document.getElementById('onezero');
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    console.log(screenWidth, screenHeight);
+    console.log("HI");
+    const textArray = [];
+    // Remove all existing children
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+
+    for (let i = 1; i <= Math.ceil(screenHeight / screenHeightDivide); i++) {
+        const span = document.createElement('span');
+        span.id = `span${i}`;
+        parent.appendChild(span);
+        textArray.push(span);
+    }
+
+    for (let i = 0; i < textArray.length; i++) {
+        while (textArray[i].firstChild) {
+            textArray[i].removeChild(textArray[i].firstChild);
+        }
+        for (let j=0; j <= Math.ceil(screenWidth / screenWidthDivide); j++) {
+            textArray[i].appendChild(document.createElement('span')).innerHTML = Math.random() > 0.5 ? 1 : 0;
+        }
+    }
+}
+
+let textChange = 0
+function changeShowText() {
+    const parent = document.getElementById('onezero');
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    console.log(screenWidth, screenHeight);
+    const textArray = [];
+    // Remove all existing children
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+
+    for (let i = 1; i <= Math.ceil(screenHeight / screenHeightDivide); i++) {
+        const span = document.createElement('span');
+        span.id = `span${i}`;
+        parent.appendChild(span);
+        textArray.push(span);
+    }
+
+    for (let i = 0; i < textArray.length; i++) {
+        while (textArray[i].firstChild) {
+            textArray[i].removeChild(textArray[i].firstChild);
+        }
+        for (let j=0; j <= Math.ceil(screenWidth / screenWidthDivide); j++) {
+            const newSpan = document.createElement('span');
+            newSpan.innerHTML = Math.random() > 0.5 ? 1 : 0;
+            if (i === 1 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-greene');
+                specificSpan.innerHTML = 'About Me';
+                textArray[i].appendChild(specificSpan);
+            }
+            if (i === 2 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-greene');
+                specificSpan.innerHTML = 'This is a paragraph.';
+                textArray[i].appendChild(specificSpan);
+            }
+            if (i === 3 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+                const specificSpan = document.createElement('span');
+                specificSpan.classList.add('text-greene');
+                specificSpan.innerHTML = 'Another string.';
+                textArray[i].appendChild(specificSpan);
+            }
+            textArray[i].appendChild(newSpan);
+        }
+    }
+}
 
 // Function to handle mouse wheel events
 const handleWheel = (event) => {
@@ -130,7 +208,7 @@ const handleWheel = (event) => {
     document.documentElement.dataset.scrollValue = currentScrollValue;
 
     // Calculate the scroll percentage
-    const total = 200;
+    const total = 300;
     const scrollPercentage = total * (((currentScrollValue / maxScrollValue)));
 
     const loading = document.getElementById('loading');
@@ -158,10 +236,13 @@ const handleWheel = (event) => {
         // onezero.classList.add('hidden');
         // onezero.classList.remove('block');
         typingEffect();
-    } else if (scrollPercentage >= 120 && scrollPercentage < 200) {
+    } else if (scrollPercentage >= 120 && scrollPercentage < 160) {
         // onezero.classList.remove('hidden');
         // onezero.classList.add('block');
+        changeText();
         stopTypingEffect();
+    } else if (scrollPercentage >= 160 && scrollPercentage < 250) {
+        changeShowText();
     }
 
     timeline.seek((scrollPercentage / 100) * timeline.duration);

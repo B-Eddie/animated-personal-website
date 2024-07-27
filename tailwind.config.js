@@ -7,6 +7,7 @@ module.exports = {
         'dark-gray': '#494949',
         'light-graye': '#D9D9D9',
         'greene': '#00FF00',
+        'dark-greene': "#235123",
       },
       fontFamily: {
         'courier': 'courier new, monospace',
