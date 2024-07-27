@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Tester</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 50px); /* Fixed size for keys */
+            gap: 5px;
+            max-width: 100%;
+            width: 800px;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
+        .keyboard .row {
+            display: contents; /* Use contents to align keys in the grid */
+        }
+        .key {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        .key.active {
+            background-color: #cfc;
+        }
+        #instructions {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="instructions">Press a key on your keyboard</div>
+    <div class="keyboard">
+        <!-- First row -->
+        <div class="key" data-key="Q">Q</div>
+        <div class="key" data-key="W">W</div>
+        <div class="key" data-key="E">E</div>
+        <div class="key" data-key="R">R</div>
+        <div class="key" data-key="T">T</div>
+        <div class="key" data-key="Y">Y</div>
+        <div class="key" data-key="U">U</div>
+        <div class="key" data-key="I">I</div>
+        <div class="key" data-key="O">O</div>
+        <div class="key" data-key="P">P</div>
+        <!-- Second row -->
+        <div class="key" data-key="A">A</div>
+        <div class="key" data-key="S">S</div>
+        <div class="key" data-key="D">D</div>
+        <div class="key" data-key="F">F</div>
+        <div class="key" data-key="G">G</div>
+        <div class="key" data-key="H">H</div>
+        <div class="key" data-key="J">J</div>
+        <div class="key" data-key="K">K</div>
+        <div class="key" data-key="L">L</div>
+        <!-- Third row -->
+        <div class="key" data-key="Z">Z</div>
+        <div class="key" data-key="X">X</div>
+        <div class="key" data-key="C">C</div>
+        <div class="key" data-key="V">V</div>
+        <div class="key" data-key="B">B</div>
+        <div class="key" data-key="N">N</div>
+        <div class="key" data-key="M">M</div>
+    </div>
+
+    <script>
+        function handleKeyDown(event) {
+            const key = event.key.toUpperCase();
+            const keyElements = document.querySelectorAll('.key');
+
+            // Remove active class from all keys
+            keyElements.forEach(el => el.classList.remove('active'));
+
+            // Add active class to the corresponding key
+            const activeKey = document.querySelector(`.key[data-key="${key}"]`);
+            if (activeKey) {
+                activeKey.classList.add('active');
+            }
+        }
+
+        function handleKeyUp(event) {
+            const key = event.key.toUpperCase();
+            const keyElements = document.querySelectorAll('.key');
+
+            // Remove active class from all keys
+            keyElements.forEach(el => el.classList.remove('active'));
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
+    </script>
+</body>
+</html>
