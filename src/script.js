@@ -50,6 +50,13 @@ timeline.add({
     targets: '#onezero',
     opacity: 1,
     duration: 300,
+}).add({
+    duration: 2000,
+}).add({
+    // Move #onezero and #projects upwards by 100vh
+    targets: ['#onezero', '#projects'],
+    translateY: '-125vh',
+    duration: 500,
 });
 
 
@@ -281,7 +288,7 @@ const handleWheel = (event) => {
     
     // const onezero = document.getElementById('onezero');
     console.log(scrollPercentage);
-    if (scrollPercentage < 40) {
+    if (scrollPercentage < 20) {
         // initial
         welcome.classList.add('hidden');
         welcome.classList.remove('flex');
@@ -291,7 +298,7 @@ const handleWheel = (event) => {
 
         // onezero.classList.add('hidden');
         // onezero.classList.remove('block');
-    } else if (scrollPercentage >= 0 && scrollPercentage < 120) {
+    } else if (scrollPercentage >= 20 && scrollPercentage < 40) {
         // welcome screen
         loading.classList.add('hidden');
 
@@ -301,15 +308,16 @@ const handleWheel = (event) => {
         // onezero.classList.add('hidden');
         // onezero.classList.remove('block');
         typingEffect();
-    } else if (scrollPercentage >= 120 && scrollPercentage < 140) {
+    } else if (scrollPercentage >= 40 && scrollPercentage < 60) {
         // onezero.classList.remove('hidden');
         // onezero.classList.add('block');
         changeText();
         stopTypingEffect();
-    } else if (scrollPercentage >= 140 && scrollPercentage < 220) {
+    } else if (scrollPercentage >= 60 && scrollPercentage < 220) {
         textChangeTrueFalse = false;
         changeShowText();
     } else if (scrollPercentage > 219) {
+        welcome.classList.add('hidden');
         textChangeTrueFalse = true;
         changeShowText();
     }
