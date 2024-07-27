@@ -26,6 +26,9 @@ module.exports = {
       fontSize: {
         'onesixrem': '1.6rem',
       },
+      width: {
+        'giga': '40rem',
+      },
     },
   },
   plugins: [],

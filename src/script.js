@@ -56,7 +56,7 @@ timeline.add({
     // Move #onezero and #projects upwards by 100vh
     targets: ['#onezero', '#projects'],
     translateY: '-125vh',
-    duration: 500,
+    duration: 300,
 });
 
 
@@ -123,8 +123,6 @@ function changeText() {
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    console.log(screenWidth, screenHeight);
-    console.log("HI");
     const textArray = [];
     // Remove all existing children
     while (parent.firstChild) {
@@ -195,7 +193,6 @@ function changeShowText() {
             newSpan.innerHTML = Math.random() > 0.5 ? 1 : 0;
             
             if (i === 1 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
-                console.log(j)
                 const specificSpan = document.createElement('span');
                 specificSpan.classList.add('text-greene');
                 if (textChangeTrueFalse) {
@@ -208,7 +205,6 @@ function changeShowText() {
             }
             if (i === 3 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
                 const text = "I'm a 15 year old interested in";
-                console.log(j)
                 const specificSpan = document.createElement('span');
                 specificSpan.classList.add('text-middle-greene');
                 if (textChangeTrueFalse) {
@@ -313,13 +309,17 @@ const handleWheel = (event) => {
         // onezero.classList.add('block');
         changeText();
         stopTypingEffect();
-    } else if (scrollPercentage >= 60 && scrollPercentage < 220) {
+    } else if (scrollPercentage >= 60 && scrollPercentage < 70) {
         textChangeTrueFalse = false;
         changeShowText();
-    } else if (scrollPercentage > 219) {
-        welcome.classList.add('hidden');
+    } else if (scrollPercentage >= 69 && scrollPercentage < 100) {
         textChangeTrueFalse = true;
         changeShowText();
+        welcome.classList.remove('hidden');
+        welcome.classList.add('flex');
+
+    } else if (scrollPercentage > 110) {
+        welcome.classList.add('hidden');
     }
 
     timeline.seek((scrollPercentage / 100) * timeline.duration);
