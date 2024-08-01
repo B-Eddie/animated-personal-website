@@ -8,11 +8,7 @@ timeline.add({
     targets: 'body',
     duration: 1,
 }).add({ 
-    // Add initial state for the welcome screen to be hidden
-    targets: '#welcome',
-    duration: 1,
-}).add({ 
-    targets: '#onezero',
+    targets: ['#logout', '#socials', '#onezero'],
     opacity: 0,
     duration: 1,
 }).add({ 
@@ -71,6 +67,21 @@ timeline.add({
     targets: ['#computer', '#projects'],
     translateY: '0vh',
     duration: 300,
+}).add({
+    duration: 500,
+}).add({ 
+    targets: '#logout',
+    opacity: 1,
+    duration: 100,
+}).add({ 
+    // Add animation to the timeline
+    targets: '#progress-bar-2',
+    duration: 500, // Duration of the specific animation
+    width: '0%',
+}).add({ 
+    targets: '#socials',
+    opacity: 1,
+    duration: 100,
 });
 
 
@@ -297,6 +308,8 @@ const handleWheel = (event) => {
     const welcome = document.getElementById('welcome');
     const projects = document.getElementById('projects');
     const computer = document.getElementById('computer');
+    const logout = document.getElementById('logout');
+    const socials = document.getElementById('socials');
 
     // const onezero = document.getElementById('onezero');
     console.log(scrollPercentage);
@@ -304,6 +317,12 @@ const handleWheel = (event) => {
         // initial
         projects.classList.add('hidden');
         projects.classList.remove('flex');
+        
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
+        
+        logout.classList.add('hidden');
+        logout.classList.remove('flex');
 
         computer.classList.add('hidden');
         computer.classList.remove('flex');
@@ -331,14 +350,14 @@ const handleWheel = (event) => {
         // onezero.classList.add('block');
         changeText();
         
-    } else if (scrollPercentage >= 60 && scrollPercentage < 70) {
+    } else if (scrollPercentage >= 60 && scrollPercentage < 66) {
         textChangeTrueFalse = false;
         projects.classList.add('hidden');
         projects.classList.remove('flex');
 
         stopTypingEffect();
         changeShowText();
-    } else if (scrollPercentage >= 69 && scrollPercentage < 94) {
+    } else if (scrollPercentage >= 66 && scrollPercentage < 75) {
         // projects scrolling down
         textChangeTrueFalse = true;
         changeShowText();
@@ -349,13 +368,37 @@ const handleWheel = (event) => {
         projects.classList.add('flex');
 
         computer.classList.add('hidden');
-        computer.classList.remove('flex');
-    } else if (scrollPercentage >= 94.85) {
+        computer.classList.remove('flex');		
+    } else if (scrollPercentage >= 77.85 && scrollPercentage < 90) {
         welcome.classList.add('hidden');
         welcome.classList.remove('flex');
         
         computer.classList.remove('hidden');
         computer.classList.add('flex');
+
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
+
+        logout.classList.add('hidden');
+        logout.classList.remove('flex');
+    } else if (scrollPercentage >= 90 && scrollPercentage < 98) {
+        logout.classList.add('flex');
+        logout.classList.remove('hidden');
+
+        computer.classList.add('hidden');
+        computer.classList.remove('flex');
+
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
+    } else if (scrollPercentage >= 98) {
+        logout.classList.add('hidden');
+        logout.classList.remove('flex');
+
+        socials.classList.add('flex');
+        socials.classList.remove('hidden');   
     }
 
     timeline.seek((scrollPercentage / 100) * timeline.duration);
@@ -377,6 +420,23 @@ const handleTouchMove = (event) => {
     handleWheel({ deltaY: touchDeltaY });
     touchStartY = touchEndY; // Update start Y to current Y for continuous scrolling
 };
+
+function goToSection(sectionId) {
+    const sectionTimes = {
+        loading: 0,
+        welcome: 4000,
+        computer: 12000,
+        projects: 17000,
+        logout: 25000,
+        socials: 29000
+    };
+
+    const time = sectionTimes[sectionId];
+    if (time !== undefined) {
+        timeline.seek(time);
+    }
+}
+
 
 // Add event listeners
 document.addEventListener('DOMContentLoaded', () => {

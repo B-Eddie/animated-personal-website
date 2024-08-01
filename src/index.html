@@ -11,6 +11,27 @@
 </head>
 
 <body class="text-white bg-black font-courier">
+  <nav class="fixed left-0 top-0 h-screen w-16 flex flex-col bg-gray-900 shadow-lg z-50">
+    <a href="#loading" onclick="goToSection('loading'); return false;" class="hover:bg-gray-700">
+      <img src="assets/icons/loading.svg" alt="loading" class="h-10 w-10 mx-auto my-4">
+    </a>
+    <a href="#welcome" onclick="goToSection('welcome'); return false;" class="hover:bg-gray-700">
+      <img src="assets/icons/welcome.svg" alt="welcome" class="h-10 w-10 mx-auto my-4">
+    </a>
+    <a href="#computer" onclick="goToSection('computer'); return false;" class="hover:bg-gray-700">
+      <img src="assets/icons/computer.svg" alt="computer" class="h-10 w-10 mx-auto my-4">
+    </a>
+    <a href="#projects" onclick="goToSection('projects')" class="hover:bg-gray-700">
+      <img src="assets/icons/projects.svg" alt="projects" class="h-10 w-10 mx-auto my-4">
+    </a>
+    <a href="#logout" onclick="goToSection('logout'); return false;" class="hover:bg-gray-700">
+      <img src="assets/icons/logout.svg" alt="logout" class="h-10 w-10 mx-auto my-4">
+    </a>
+    <a href="#socials" onclick="goToSection('socials'); return false;" class="hover:bg-gray-700">
+      <img src="assets/icons/socials.svg" alt="socials" class="h-10 w-10 mx-auto my-4">
+    </a>
+  </nav>
+  
   <section class="flex h-screen flex-col items-center gap-12 md:gap-24 align-center" id="loading">
     <div class="flex items-center flex-col pt-28 md:pt-32 gap-10">
       <img src="assets/logo.png" alt="logo" class="h-60 w-60">
@@ -124,6 +145,44 @@
       </div>
     </div>
   </section>
+
+  <section id="logout" class="absolute top-0 w-full h-screen flex flex-col items-center justify-center bg-black">
+    <div class="flex items-center flex-col gap-10">
+      <img src="assets/logo.png" alt="logo" class="h-60 w-60 rounded-full">
+      <h1 class="font-bold text-center text-4xl text-white">
+        Logging Out
+      </h1>
+    </div>
+    <div class="flex w-1/2 bg-dark-gray rounded-full mt-10">
+      <div id="progress-bar-2" class="h-2.5 bg-light-graye rounded-full w-full" style="width: 100%;"></div>
+    </div>
+    </div>
+  </section>
+  
+
+  <section id="socials" class="absolute inset-0 flex flex-col items-center justify-center gap-32 text-center bg-black">
+    <h1 class="font-bold text-4xl text-white">
+      Logged Out
+    </h1>
+    <div class="flex flex-row gap-16">
+      <a href="mailto:eddiewird@gmail.com" target="_blank">
+        <img src="assets/mail.svg" alt="mail" class="h-32 w-32">
+      </a>
+      <a href="https://github.com/B-Eddie" target="_blank">
+        <img src="assets/github.svg" alt="github" class="h-32 w-32">
+      </a>
+      <a href="https://www.linkedin.com/in/eddiebian/" target="_blank">
+        <img src="assets/linkedin.svg" alt="linkedin" class="h-32 w-32">
+      </a>
+      <a href="https://www.instagram.com/eddie.bian/" target="_blank">
+        <img src="assets/instagram.svg" alt="instagram" class="h-32 w-32">
+      </a>
+    </div>
+    <h1 class="text-white">
+      © 2024 Eddie Bian<br>All Rights Reserved
+    </h1>
+  </section>
+  
 </body>
 <script src="script.js"></script>
 <script src="terminal.js"></script>
