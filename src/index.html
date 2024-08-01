@@ -1,13 +1,15 @@
 <!doctype html>
 <html class="overflow-hidden">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  
+
   <title>Eddie Bian</title>
 </head>
+
 <body class="text-white bg-black font-courier">
   <section class="flex h-screen flex-col items-center gap-12 md:gap-24 align-center" id="loading">
     <div class="flex items-center flex-col pt-28 md:pt-32 gap-10">
@@ -26,20 +28,41 @@
   </section>
 
   <section id="welcome" class="h-screen flex-col mx-96 align-center text-center items-center">
-    <img src="assets/icons/desktop.svg" alt="desktop" id="desktop" class="flex justify-center absolute mt-20 mx-auto align-center">
+    <img src="assets/icons/desktop.svg" alt="desktop" id="desktop"
+      class="flex justify-center absolute mt-20 mx-auto align-center">
     <h1 class="text-greene text-6xl font-bold mt-32 disapere" id="welcome-text">Welcome</h1>
     <div class="mt-12 -ml-32 w-80 text-left disapere" id="text-animation">
       <h2 class="font-bold text-4xl">I'm Eddie</h2>
       <div class="flex flex-row font-semibold mt-5">
         <h3>A&nbsp;</h3>
         <p class="header-sub-title" id="word"></p>
-        <span class="caret" style="animation: blink 1s step-end infinite; background-color: hsla(1, 1%, 100%, 1);">|</span>
-      </div>
+        <span class="caret"
+          style="animation: blink 1s step-end infinite; background-color: hsla(1, 1%, 100%, 1);">|</span>
       </div>
     </div>
-    <p class="flex absolute flex-col text-dark-greene font-bold text-6xl top-0 flex-nowrap text-nowrap text-left" id="onezero"></p>  
+    </div>
+    <p class="flex absolute flex-col text-dark-greene font-bold text-6xl top-0 flex-nowrap text-nowrap text-left"
+      id="onezero"></p>
   </section>
-  <section id="projects" class="h-screen w-screen flex-col mx-96 align-center text-center items-center ml-auto mr-auto mt-52 text-black">
+
+  <section id="computer" class="h-screen w-screen flex-col bg-white">
+    <div id="languages">
+      <div class="button-container">
+        <button onclick="insertText('python')">Insert 'python'</button>
+      </div>
+    </div>
+    <div id="terminal-container" class="text-black">
+      <div class="terminal overflow-y-scroll w-screen" id="terminal">
+        <div class="output">Welcome to the fake terminal!</div>
+        <div class="input-line flex">
+          <span>&gt; </span><input type="text" id="input" class="flex-1 bg-black text-green-600" autofocus>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects"
+    class="h-screen w-screen flex-col mx-96 align-center text-center items-center ml-auto mr-auto mt-52 text-black">
     <img src="assets/icons/bottom-desktop.svg" alt="bottom-desktop" class="w-52 z-10 ml-auto mr-auto">
     <div class="bg-white pt-6 pb-4">
       <h2 class="font-bold text-4xl">My Projects</h2>
@@ -55,14 +78,7 @@
       </div>
     </div>
   </section>
-  
-  <section>
-    <div id="computer">
-      <div id="screen">
-        
-      </div>
-    </div>
-  </section>
 </body>
 <script src="script.js"></script>
+<script src="terminal.js"></script>
 </html>

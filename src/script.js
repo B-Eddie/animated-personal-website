@@ -57,6 +57,20 @@ timeline.add({
     targets: ['#onezero', '#projects'],
     translateY: '-125vh',
     duration: 300,
+}).add({
+    duration: 500,
+}).add({
+    targets: '#projects',
+    duration: 0.0001,
+    translateY: '-125vh',
+}).add({
+    targets: '#computer',
+    duration: 0.0001,
+    translateY: '-100vh',
+}).add({
+    targets: ['#computer', '#projects'],
+    translateY: '0vh',
+    duration: 300,
 });
 
 
@@ -264,7 +278,7 @@ const handleWheel = (event) => {
     const maxScrollValue = 5000; // max scroll
 
     // Calculate the scroll based on the wheel
-    const scrollAmount = event.deltaY;
+    const scrollAmount = event.deltaY / 20; // the / 80 makes it scroll slower
 
     // Get the current scroll value from data attribute or initialize it
     let currentScrollValue = parseFloat(document.documentElement.dataset.scrollValue) || 0;
@@ -281,11 +295,19 @@ const handleWheel = (event) => {
 
     const loading = document.getElementById('loading');
     const welcome = document.getElementById('welcome');
-    
+    const projects = document.getElementById('projects');
+    const computer = document.getElementById('computer');
+
     // const onezero = document.getElementById('onezero');
     console.log(scrollPercentage);
     if (scrollPercentage < 20) {
         // initial
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
+        computer.classList.add('hidden');
+        computer.classList.remove('flex');
+
         welcome.classList.add('hidden');
         welcome.classList.remove('flex');
 
@@ -308,18 +330,32 @@ const handleWheel = (event) => {
         // onezero.classList.remove('hidden');
         // onezero.classList.add('block');
         changeText();
-        stopTypingEffect();
+        
     } else if (scrollPercentage >= 60 && scrollPercentage < 70) {
         textChangeTrueFalse = false;
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
+        stopTypingEffect();
         changeShowText();
-    } else if (scrollPercentage >= 69 && scrollPercentage < 100) {
+    } else if (scrollPercentage >= 69 && scrollPercentage < 94) {
+        // projects scrolling down
         textChangeTrueFalse = true;
         changeShowText();
         welcome.classList.remove('hidden');
         welcome.classList.add('flex');
+        
+        projects.classList.remove('hidden');
+        projects.classList.add('flex');
 
-    } else if (scrollPercentage > 110) {
+        computer.classList.add('hidden');
+        computer.classList.remove('flex');
+    } else if (scrollPercentage >= 94.85) {
         welcome.classList.add('hidden');
+        welcome.classList.remove('flex');
+        
+        computer.classList.remove('hidden');
+        computer.classList.add('flex');
     }
 
     timeline.seek((scrollPercentage / 100) * timeline.duration);
