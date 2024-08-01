@@ -337,6 +337,9 @@ const handleWheel = (event) => {
         // onezero.classList.remove('block');
     } else if (scrollPercentage >= 20 && scrollPercentage < 40) {
         // welcome screen
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+        
         loading.classList.add('hidden');
 
         welcome.classList.remove('hidden');
@@ -345,19 +348,23 @@ const handleWheel = (event) => {
         // onezero.classList.add('hidden');
         // onezero.classList.remove('block');
         typingEffect();
-    } else if (scrollPercentage >= 40 && scrollPercentage < 60) {
+    } else if (scrollPercentage >= 40 && scrollPercentage < 54) {
         // onezero.classList.remove('hidden');
         // onezero.classList.add('block');
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
         changeText();
-        
-    } else if (scrollPercentage >= 60 && scrollPercentage < 66) {
+        welcome.classList.remove('hidden');
+        welcome.classList.add('flex');
+    } else if (scrollPercentage >= 54 && scrollPercentage < 60) {
         textChangeTrueFalse = false;
         projects.classList.add('hidden');
         projects.classList.remove('flex');
 
         stopTypingEffect();
         changeShowText();
-    } else if (scrollPercentage >= 66 && scrollPercentage < 75) {
+    } else if (scrollPercentage >= 60 && scrollPercentage < 75) {
         // projects scrolling down
         textChangeTrueFalse = true;
         changeShowText();
@@ -372,7 +379,9 @@ const handleWheel = (event) => {
     } else if (scrollPercentage >= 77.85 && scrollPercentage < 90) {
         welcome.classList.add('hidden');
         welcome.classList.remove('flex');
-        
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
         computer.classList.remove('hidden');
         computer.classList.add('flex');
 
@@ -382,6 +391,9 @@ const handleWheel = (event) => {
         logout.classList.add('hidden');
         logout.classList.remove('flex');
     } else if (scrollPercentage >= 90 && scrollPercentage < 98) {
+        welcome.classList.add('hidden');
+        welcome.classList.remove('flex');
+
         logout.classList.add('flex');
         logout.classList.remove('hidden');
 
@@ -394,6 +406,11 @@ const handleWheel = (event) => {
         socials.classList.add('hidden');
         socials.classList.remove('flex');
     } else if (scrollPercentage >= 98) {
+        welcome.classList.add('hidden');
+        welcome.classList.remove('flex');
+        projects.classList.add('hidden');
+        projects.classList.remove('flex');
+
         logout.classList.add('hidden');
         logout.classList.remove('flex');
 
@@ -403,6 +420,41 @@ const handleWheel = (event) => {
 
     timeline.seek((scrollPercentage / 100) * timeline.duration);
 };
+
+function goToSection(sectionId) {
+    const sectionTimes = {
+        loading: 0,
+        welcome: 400,
+        about: 700,
+        projects: 1200,
+        skills: 1400,
+        socials: 1700
+    };
+
+    console.log(sectionTimes[sectionId]);
+    const time = sectionTimes[sectionId];
+    if (time !== undefined) {
+        // Seek the timeline to the specified time
+        timeline.seek(time);
+        
+        // Calculate the scroll percentage based on the time
+        const scrollPercentage = (time / timeline.duration) * 100;
+
+        // Calculate the scroll value
+        const maxScrollValue = 5000;
+        const simulatedScrollValue = (scrollPercentage / 100) * maxScrollValue;
+
+        // Simulate the scroll event
+        const simulatedEvent = { deltaY: (simulatedScrollValue - parseFloat(document.documentElement.dataset.scrollValue)) };
+
+        // Update the scroll value
+        document.documentElement.dataset.scrollValue = simulatedScrollValue;
+
+        // Trigger the handleWheel function to apply the animations
+        handleWheel(simulatedEvent);
+    }
+}
+
 
 // Variables to track touch events
 let touchStartY = 0;
@@ -421,21 +473,7 @@ const handleTouchMove = (event) => {
     touchStartY = touchEndY; // Update start Y to current Y for continuous scrolling
 };
 
-function goToSection(sectionId) {
-    const sectionTimes = {
-        loading: 0,
-        welcome: 4000,
-        computer: 12000,
-        projects: 17000,
-        logout: 25000,
-        socials: 29000
-    };
 
-    const time = sectionTimes[sectionId];
-    if (time !== undefined) {
-        timeline.seek(time);
-    }
-}
 
 
 // Add event listeners

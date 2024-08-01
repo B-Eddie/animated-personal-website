@@ -11,26 +11,55 @@
 </head>
 
 <body class="text-white bg-black font-courier">
-  <nav class="fixed left-0 top-0 h-screen w-16 flex flex-col bg-gray-900 shadow-lg z-50">
-    <a href="#loading" onclick="goToSection('loading'); return false;" class="hover:bg-gray-700">
-      <img src="assets/icons/loading.svg" alt="loading" class="h-10 w-10 mx-auto my-4">
-    </a>
-    <a href="#welcome" onclick="goToSection('welcome'); return false;" class="hover:bg-gray-700">
-      <img src="assets/icons/welcome.svg" alt="welcome" class="h-10 w-10 mx-auto my-4">
-    </a>
-    <a href="#computer" onclick="goToSection('computer'); return false;" class="hover:bg-gray-700">
-      <img src="assets/icons/computer.svg" alt="computer" class="h-10 w-10 mx-auto my-4">
-    </a>
-    <a href="#projects" onclick="goToSection('projects')" class="hover:bg-gray-700">
-      <img src="assets/icons/projects.svg" alt="projects" class="h-10 w-10 mx-auto my-4">
-    </a>
-    <a href="#logout" onclick="goToSection('logout'); return false;" class="hover:bg-gray-700">
-      <img src="assets/icons/logout.svg" alt="logout" class="h-10 w-10 mx-auto my-4">
-    </a>
-    <a href="#socials" onclick="goToSection('socials'); return false;" class="hover:bg-gray-700">
-      <img src="assets/icons/socials.svg" alt="socials" class="h-10 w-10 mx-auto my-4">
-    </a>
-  </nav>
+  <nav class="fixed h-screen flex items-center right-5 z-50">
+    <div class="m-auto border-4 border-gray-500 bg-blue-950 bg-opacity-70 rounded-3xl py-10">
+      <div class="flex flex-col items-center space-y-4">
+        <div class="relative group">
+          <a href="#loading" onclick="goToSection('loading'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/home.svg" alt="home" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">Home</span>
+          </a>
+        </div>
+        <div class="relative group">
+          <a href="#welcome" onclick="goToSection('welcome'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/wave.svg" alt="welcome" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">Welcome</span>
+          </a>
+        </div>
+        <div class="relative group">
+          <a href="#about" onclick="goToSection('about'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/about.svg" alt="about" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">About</span>
+          </a>
+        </div>
+        <div class="relative group">
+          <a href="#projects" onclick="goToSection('projects'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/projects.svg" alt="projects" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">Projects</span>
+          </a>
+        </div>
+        <div class="relative group">
+          <a href="#skills" onclick="goToSection('skills'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/skills.svg" alt="skills" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">Skills</span>
+          </a>
+        </div>
+        <div class="relative group">
+          <a href="#socials" onclick="goToSection('socials'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
+            <img src="assets/icons/sidebar/socials.svg" alt="socials" class="h-10 w-10">
+            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap">Socials</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+</nav>
+
+
+
+
+
+
   
   <section class="flex h-screen flex-col items-center gap-12 md:gap-24 align-center" id="loading">
     <div class="flex items-center flex-col pt-28 md:pt-32 gap-10">
