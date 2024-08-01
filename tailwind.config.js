@@ -9,6 +9,9 @@ module.exports = {
         'greene': '#00FF00',
         'dark-greene': "#235123",
         'middle-greene': "#5AA95A",
+        '565656': "#565656",
+        '8B8B8B': "#8B8B8B",
+        '1B1B1B': "#1B1B1B",
       },
       fontFamily: {
         'courier': 'courier new, monospace',

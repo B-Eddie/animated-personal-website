@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
+  <link rel="icon" href="assets/logo.png" type="image/png">
   <title>Eddie Bian</title>
 </head>
 
@@ -45,17 +45,63 @@
       id="onezero"></p>
   </section>
 
-  <section id="computer" class="h-screen w-screen flex-col bg-white">
-    <div id="languages">
-      <div class="button-container">
-        <button onclick="insertText('python')">Insert 'python'</button>
+  <section id="computer" class="h-screen w-screen flex-col bg-white relative">
+    <h1 class="mx-auto text-black text-5xl font-bold pt-5">Languages</h1>
+    <div class="button-container text-black flex flex-row gap-10 px-5 pt-10 flex-wrap">
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('python')">
+        <img src="assets/python.png" alt="python">
+        <button>Python</button>
+      </div>
+      
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('html')">
+        <img src="assets/css.png" alt="css">
+        <button>HTML</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('css')">
+        <img src="assets/css.png" alt="css">
+        <button>CSS</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('javascript')">
+        <img src="assets/javascript.png" alt="javascript">
+        <button>JavaScript</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('csharp')">
+        <img src="assets/csharp.png" alt="csharp">
+        <button>C#</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('flask')">
+        <img src="assets/flask.png" alt="flask">
+        <button>Flask</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('java')">
+        <img src="assets/java.png" alt="java">
+        <button>Java</button>
+      </div>
+
+      <div class="flex flex-row h-24 font-bold text-3xl gap-4 border-greene border-solid border-4 px-3 py-3 transition-colors hover:border-red-500 cursor-pointer" onclick="insertText('mysql')">
+        <img src="assets/mysql.png" alt="mysql">
+        <button>MySQL</button>
+      </div>
       </div>
     </div>
-    <div id="terminal-container" class="text-black">
-      <div class="terminal overflow-y-scroll w-screen" id="terminal">
-        <div class="output">Welcome to the fake terminal!</div>
+
+    <div id="terminal-container" class="text-black absolute bottom-0 ">
+      <div class="flex flex-row">
+        <div class="bg-565656 text-white px-3">Terminal
+          <hr>
+        </div>
+        <div class="bg-1B1B1B w-screen"></div>
+      </div>
+
+      <div class="terminal overflow-y-hidden w-screen h-64 bg-565656 pl-4 py-4" id="terminal">
         <div class="input-line flex">
-          <span>&gt; </span><input type="text" id="input" class="flex-1 bg-black text-green-600" autofocus>
+          <span class="text-greene">~/Skills &gt;&nbsp;</span><input type="text" id="input"
+            class="flex-1 bg-565656 text-white border-none outline-none" autofocus autocomplete="off">
         </div>
       </div>
     </div>
@@ -81,4 +127,5 @@
 </body>
 <script src="script.js"></script>
 <script src="terminal.js"></script>
+
 </html>
