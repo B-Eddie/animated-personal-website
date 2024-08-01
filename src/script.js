@@ -265,7 +265,7 @@ function changeShowText() {
                 h = true;
             }
             if (i === 6 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
-                const text = "getting good grades";
+                const text = "hackathons!";
                 const specificSpan = document.createElement('span');
                 specificSpan.classList.add('text-middle-greene');
                 if (textChangeTrueFalse) {
@@ -339,7 +339,9 @@ const handleWheel = (event) => {
         // welcome screen
         projects.classList.add('hidden');
         projects.classList.remove('flex');
-        
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
+
         loading.classList.add('hidden');
 
         welcome.classList.remove('hidden');
@@ -353,6 +355,8 @@ const handleWheel = (event) => {
         // onezero.classList.add('block');
         projects.classList.add('hidden');
         projects.classList.remove('flex');
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
 
         changeText();
         welcome.classList.remove('hidden');
@@ -361,6 +365,8 @@ const handleWheel = (event) => {
         textChangeTrueFalse = false;
         projects.classList.add('hidden');
         projects.classList.remove('flex');
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
 
         stopTypingEffect();
         changeShowText();
@@ -370,6 +376,8 @@ const handleWheel = (event) => {
         changeShowText();
         welcome.classList.remove('hidden');
         welcome.classList.add('flex');
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
         
         projects.classList.remove('hidden');
         projects.classList.add('flex');
@@ -381,6 +389,8 @@ const handleWheel = (event) => {
         welcome.classList.remove('flex');
         projects.classList.add('hidden');
         projects.classList.remove('flex');
+        socials.classList.add('hidden');
+        socials.classList.remove('flex');
 
         computer.classList.remove('hidden');
         computer.classList.add('flex');
@@ -425,33 +435,42 @@ function goToSection(sectionId) {
     const sectionTimes = {
         loading: 0,
         welcome: 400,
-        about: 700,
+        about: 1100,
         projects: 1200,
         skills: 1400,
         socials: 1700
     };
 
-    console.log(sectionTimes[sectionId]);
+    const currentScrollValue = parseFloat(document.documentElement.dataset.scrollValue) || 0;
     const time = sectionTimes[sectionId];
     if (time !== undefined) {
-        // Seek the timeline to the specified time
-        timeline.seek(time);
-        
-        // Calculate the scroll percentage based on the time
         const scrollPercentage = (time / timeline.duration) * 100;
-
-        // Calculate the scroll value
         const maxScrollValue = 5000;
-        const simulatedScrollValue = (scrollPercentage / 100) * maxScrollValue;
+        const desiredScrollValue = (scrollPercentage / 100) * maxScrollValue;
+        const scrollDistance = desiredScrollValue - currentScrollValue;
 
-        // Simulate the scroll event
-        const simulatedEvent = { deltaY: (simulatedScrollValue - parseFloat(document.documentElement.dataset.scrollValue)) };
+        const scrollStep = scrollDistance / 50; // Adjust this value to control the smoothness of the scroll
+        let scrolledValue = currentScrollValue;
 
-        // Update the scroll value
-        document.documentElement.dataset.scrollValue = simulatedScrollValue;
+        const scrollInterval = setInterval(() => {
+            scrolledValue += scrollStep;
 
-        // Trigger the handleWheel function to apply the animations
-        handleWheel(simulatedEvent);
+            // Calculate the percentage scrolled
+            const scrollPercentage = ((scrolledValue / maxScrollValue) * 100);
+            
+            // Update the scroll value in the dataset
+            document.documentElement.dataset.scrollValue = scrolledValue;
+
+            // Create a simulated scroll event
+            const simulatedEvent = { deltaY: scrollStep };
+
+            // Trigger the handleWheel function to apply the animations
+            handleWheel(simulatedEvent);
+
+            if (Math.abs(scrolledValue - desiredScrollValue) < Math.abs(scrollStep)) {
+                clearInterval(scrollInterval);
+            }
+        }, 10); // Adjust this value to control the speed of the scroll
     }
 }
 
