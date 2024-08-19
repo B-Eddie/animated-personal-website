@@ -225,7 +225,7 @@ function changeShowText() {
   const screenHeight = window.innerHeight;
   const textArray = [];
   var randomGarbage = "";
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 50; i++) {
     randomGarbage += Math.random() > 0.5 ? 1 : 0;
   }
   var rowone;
