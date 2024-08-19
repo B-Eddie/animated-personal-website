@@ -170,7 +170,7 @@ if (screen.width > 640) {
 
 function changeText() {
   const parent = document.getElementById("onezero");
-
+  var screenWidthDividing;
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
   const textArray = [];
@@ -178,7 +178,11 @@ function changeText() {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
-
+  if (screen.width > 640) {
+    screenWidthDividing = 30; // 50
+  } else {
+    screenWidthDividing = 15; // 30
+  }
   for (let i = 1; i <= Math.ceil(screenHeight / screenHeightDivide); i++) {
     const span = document.createElement("span");
     span.id = `span${i}`;
@@ -190,7 +194,7 @@ function changeText() {
     while (textArray[i].firstChild) {
       textArray[i].removeChild(textArray[i].firstChild);
     }
-    for (let j = 0; j <= Math.ceil(screenWidth / screenWidthDivide); j++) {
+    for (let j = 0; j <= Math.ceil(screenWidth / screenWidthDividing); j++) {
       textArray[i].appendChild(document.createElement("span")).innerHTML =
         Math.random() > 0.5 ? 1 : 0;
     }
@@ -220,11 +224,16 @@ function changeShowText() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
   const textArray = [];
+  var randomGarbage = "";
+  for (let i = 0; i < 20; i++) {
+    randomGarbage += Math.random() > 0.5 ? 1 : 0;
+  }
   var rowone;
   var rowtwo;
   var rowthree;
   var rowfour;
   var rowfive;
+
   if (screen.width > 640) {
     rowone = 1;
     rowtwo = 3;
@@ -267,7 +276,7 @@ function changeShowText() {
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-greene");
         if (textChangeTrueFalse) {
-            specificSpan.innerHTML = `About Me<span class='text-dark-greene'>${(Math.random() > 0.5 ? 1 : 0)}${(Math.random() > 0.5 ? 1 : 0)}</span>`;
+          specificSpan.innerHTML = `About Me<span class='text-dark-greene'>${randomGarbage}</span>`;
         } else {
           specificSpan.innerHTML = scrambleText("About Me");
         }
@@ -323,11 +332,11 @@ function changeShowText() {
         i === rowfive &&
         j === Math.floor(screenWidth / (3 * screenWidthDivide))
       ) {
-        const text = "hackathons!";
+        const text = `hackathons!`;
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
         if (textChangeTrueFalse) {
-          specificSpan.innerHTML = text.toString();
+          specificSpan.innerHTML = `hackathons!<span class='text-dark-greene'>${randomGarbage}</span>`;
         } else {
           specificSpan.innerHTML = scrambleText(text.toString());
         }

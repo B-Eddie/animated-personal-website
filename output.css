@@ -1274,12 +1274,20 @@ video {
     width: 20rem;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
 
   .sm\:flex-col {
     flex-direction: column;
+  }
+
+  .sm\:gap-16 {
+    gap: 4rem;
   }
 
   .sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
