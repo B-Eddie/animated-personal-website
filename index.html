@@ -83,7 +83,7 @@
     <img src="assets/icons/phone.svg" alt="phone" id="desktop"
       class="absolute flex justify-center mx-auto mt-20 sm:hidden align-center">
     <h1 class="mt-32 text-6xl font-bold text-greene disapere" id="welcome-text">Welcome</h1>
-    <div class="mt-12 -ml-32 text-center sm:text-left w-80 disapere" id="text-animation">
+    <div class="mt-12 text-center sm:-ml-32 w-52 sm:text-left sm:w-80 disapere" id="text-animation">
       <h2 class="text-4xl font-bold">I'm Eddie</h2>
       <div class="flex flex-row mt-5 font-semibold">
         <h3>A&nbsp;</h3>
@@ -93,13 +93,13 @@
       </div>
     </div>
     </div>
-    <p class="absolute top-0 flex flex-col text-6xl font-bold text-left text-dark-greene flex-nowrap text-nowrap"
+    <p class="absolute top-0 flex flex-col h-screen text-lg font-bold text-left sm:text-6xl overflow-clip text-dark-greene flex-nowrap text-nowrap"
       id="onezero"></p>
   </section>
 
-  <section id="computer" class="relative flex-col w-screen h-screen bg-white">
-    <h1 class="pt-5 mx-auto text-5xl font-bold text-black">Languages</h1>
-    <div class="flex flex-row flex-wrap gap-10 px-5 pt-10 text-black button-container">
+  <section id="computer" class="relative flex-col w-screen h-screen bg-white pt-36">
+    <h1 class="pt-5 pb-3 mx-auto text-5xl font-bold text-black">Languages</h1>
+    <div class="flex flex-row flex-wrap gap-10 px-5 pt-10 overflow-scroll text-black button-container">
       <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('python')">
         <img src="assets/python.png" alt="python">
         <button>Python</button>
@@ -152,7 +152,7 @@
 
       <div class="w-screen h-64 py-4 pl-4 overflow-y-hidden terminal bg-565656" id="terminal">
         <div class="flex input-line">
-          <span class="text-greene">~/Skills &gt;&nbsp;</span><input type="text" id="input"
+          <span class="text-lg text-greene">~/Skills &gt;&nbsp;</span><input type="text" id="input"
             class="flex-1 text-white border-none outline-none bg-565656" autofocus autocomplete="off">
         </div>
       </div>
@@ -160,11 +160,11 @@
   </section>
 
   <section id="projects"
-    class="flex-col items-center w-screen h-screen ml-auto mr-auto text-center text-black mx-96 align-center mt-52">
+    class="absolute flex-col items-center w-screen h-screen ml-auto mr-auto text-center text-black top-full mx-96 align-center mt-52">
     <img src="assets/icons/bottom-desktop.svg" alt="bottom-desktop" class="z-10 ml-auto mr-auto w-52">
-    <div class="w-full pt-6 pb-4 bg-white">
+    <div class="w-full h-screen pt-6 pb-4 bg-white">
       <h2 class="text-4xl font-bold">My Projects</h2>
-      <div class="flex flex-row justify-center ml-auto mr-auto gap-11">
+      <div class="flex flex-col justify-center ml-auto mr-auto sm:flex-row gap-11">
         <div>
           <h3 class="text-3xl">WorkFlex</h3>
           <img src="assets/workflex.png" alt="workflex" class="transition -rotate-5 w-giga hover:rotate-6">
@@ -176,7 +176,7 @@
       </div>
     </div>
   </section>
-
+  
   <section id="logout" class="absolute top-0 flex flex-col items-center justify-center w-full h-screen bg-black">
     <div class="flex flex-col items-center gap-10">
       <img src="assets/logo.png" alt="logo" class="rounded-full h-60 w-60">

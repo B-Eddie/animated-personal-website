@@ -11,11 +11,11 @@ function handleCommand() {
   const output = document.createElement("div");
   output.className = "output";
   const span1 = document.createElement("span");
-  span1.className = "text-greene";
+  span1.className = "text-lg text-greene";
   span1.textContent = "~/Skills > ";
 
   const span2 = document.createElement("span");
-  span2.className = "text-white";
+  span2.className = "text-lg text-white";
   span2.textContent = command;
 
   output.appendChild(span1);
@@ -28,7 +28,7 @@ function handleCommand() {
 
 function processCommand(command, terminal) {
   const response = document.createElement("div");
-  response.className = "text-white output";
+  response.className = "text-lg text-white output";
 
   switch (command.toLowerCase()) {
     case "python":

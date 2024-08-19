@@ -158,8 +158,15 @@ function stopTypingEffect() {
   document.getElementById("word").innerHTML = "";
 }
 
-const screenWidthDivide = 30;
-const screenHeightDivide = 50;
+var screenWidthDivide;
+var screenHeightDivide;
+if (screen.width > 640) {
+  screenWidthDivide = 30; // 30
+  screenHeightDivide = 50; // 50
+} else {
+  screenWidthDivide = 18; // 30
+  screenHeightDivide = 28; // 50
+}
 
 function changeText() {
   const parent = document.getElementById("onezero");
@@ -189,6 +196,7 @@ function changeText() {
     }
   }
 }
+
 function scrambleText(input) {
   function scrambleString(str) {
     let array = str.split("");
@@ -212,7 +220,24 @@ function changeShowText() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
   const textArray = [];
-
+  var rowone;
+  var rowtwo;
+  var rowthree;
+  var rowfour;
+  var rowfive;
+  if (screen.width > 640) {
+    rowone = 1;
+    rowtwo = 3;
+    rowthree = 4;
+    rowfour = 5;
+    rowfive = 6;
+  } else {
+    rowone = 5;
+    rowtwo = 7;
+    rowthree = 8;
+    rowfour = 9;
+    rowfive = 10;
+  }
   // Remove all existing children
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
@@ -235,18 +260,24 @@ function changeShowText() {
       const newSpan = document.createElement("span");
       newSpan.innerHTML = Math.random() > 0.5 ? 1 : 0;
 
-      if (i === 1 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+      if (
+        i === rowone &&
+        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+      ) {
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-greene");
         if (textChangeTrueFalse) {
-          specificSpan.innerHTML = "About Me";
+            specificSpan.innerHTML = `About Me<span class='text-dark-greene'>${(Math.random() > 0.5 ? 1 : 0)}${(Math.random() > 0.5 ? 1 : 0)}</span>`;
         } else {
           specificSpan.innerHTML = scrambleText("About Me");
         }
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (i === 3 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+      if (
+        i === rowtwo &&
+        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+      ) {
         const text = "I'm a 15 year old interested in";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -258,7 +289,10 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (i === 4 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+      if (
+        i === rowthree &&
+        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+      ) {
         const text = "coding, design, and AI. I love";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -270,7 +304,10 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (i === 5 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+      if (
+        i === rowfour &&
+        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+      ) {
         const text = "playing sports, coding, and";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -282,7 +319,10 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (i === 6 && j === Math.floor(screenWidth / (3 * screenWidthDivide))) {
+      if (
+        i === rowfive &&
+        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+      ) {
         const text = "hackathons!";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -311,7 +351,7 @@ const handleWheel = (event) => {
   if (screen.width > 640) {
     scrollAmount = event.deltaY / 20; // the / 80 makes it scroll slower
   } else {
-    scrollAmount = event.deltaY / 8; // the / 80 makes it scroll slower
+    scrollAmount = event.deltaY / 5; // the / 80 makes it scroll slower
   }
   console.log(scrollAmount);
 
@@ -415,8 +455,8 @@ const handleWheel = (event) => {
   } else if (scrollPercentage >= 77.85 && scrollPercentage < 90) {
     welcome.classList.add("hidden");
     welcome.classList.remove("flex");
-    projects.classList.add("hidden");
-    projects.classList.remove("flex");
+    // projects.classList.add("hidden");
+    // projects.classList.remove("flex");
     socials.classList.add("hidden");
     socials.classList.remove("flex");
 
