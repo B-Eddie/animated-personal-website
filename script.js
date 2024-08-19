@@ -181,7 +181,7 @@ function changeText() {
   if (screen.width > 640) {
     screenWidthDividing = 30; // 50
   } else {
-    screenWidthDividing = 15; // 30
+    screenWidthDividing = 10; // 30
   }
   for (let i = 1; i <= Math.ceil(screenHeight / screenHeightDivide); i++) {
     const span = document.createElement("span");
