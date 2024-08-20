@@ -181,7 +181,7 @@ function changeText() {
   if (screen.width > 640) {
     screenWidthDividing = 30; // 50
   } else {
-    screenWidthDividing = 15; // 30
+    screenWidthDividing = 10; // 30
   }
   for (let i = 1; i <= Math.ceil(screenHeight / screenHeightDivide); i++) {
     const span = document.createElement("span");
@@ -224,8 +224,9 @@ function changeShowText() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
   const textArray = [];
+  const col = 20 * screenWidthDivide;
   var randomGarbage = "";
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 50; i++) {
     randomGarbage += Math.random() > 0.5 ? 1 : 0;
   }
   var rowone;
@@ -271,7 +272,7 @@ function changeShowText() {
 
       if (
         i === rowone &&
-        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+        j === Math.floor(screenWidth / (col))
       ) {
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-greene");
@@ -285,7 +286,7 @@ function changeShowText() {
       }
       if (
         i === rowtwo &&
-        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+        j === Math.floor(screenWidth / (col))
       ) {
         const text = "I'm a 15 year old interested in";
         const specificSpan = document.createElement("span");
@@ -300,7 +301,7 @@ function changeShowText() {
       }
       if (
         i === rowthree &&
-        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+        j === Math.floor(screenWidth / (col))
       ) {
         const text = "coding, design, and AI. I love";
         const specificSpan = document.createElement("span");
@@ -315,7 +316,7 @@ function changeShowText() {
       }
       if (
         i === rowfour &&
-        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+        j === Math.floor(screenWidth / (col))
       ) {
         const text = "playing sports, coding, and";
         const specificSpan = document.createElement("span");
@@ -330,7 +331,7 @@ function changeShowText() {
       }
       if (
         i === rowfive &&
-        j === Math.floor(screenWidth / (3 * screenWidthDivide))
+        j === Math.floor(screenWidth / (col))
       ) {
         const text = `hackathons!`;
         const specificSpan = document.createElement("span");

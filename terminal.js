@@ -59,6 +59,14 @@ function processCommand(command, terminal) {
       response.innerHTML =
         "Available commands: python, html, css, javascript, csharp, flask, java, mysql, help";
       break;
+    case "clear":
+      const terminalChildren = Array.from(terminal.children);
+      terminalChildren.forEach((child) => {
+        if (child.id !== "input-terminal") {
+          terminal.removeChild(child);
+        }
+      });
+      break;
     default:
       response.textContent = "Command not found: " + command;
   }
