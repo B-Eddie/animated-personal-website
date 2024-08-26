@@ -1,221 +1,379 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="overflow-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <title>Eddie Bian</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <link rel="icon" href="assets/logo.png" type="image/png">
-  <title>Eddie Bian</title>
-</head>
-
-<body class="inset-0 flex items-center justify-center text-white bg-black font-courier">
-  <nav class="fixed left-auto right-auto z-50 flex items-center top-4 sm:h-screen sm:right-5">
-    <div class="m-auto border-4 border-gray-500 sm:py-10 bg-blue-950 bg-opacity-70 rounded-3xl">
-      <div class="flex flex-row items-center py-2 sm:flex-col">
-        <div class="relative group">
-          <a href="#loading" onclick="goToSection('loading'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/home.svg" alt="home" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">Home</span>
-          </a>
-        </div>
-        <div class="relative group">
-          <a href="#welcome" onclick="goToSection('welcome'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/wave.svg" alt="welcome" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">Welcome</span>
-          </a>
-        </div>
-        <div class="relative group">
-          <a href="#about" onclick="goToSection('about'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/about.svg" alt="about" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">About</span>
-          </a>
-        </div>
-        <div class="relative group">
-          <a href="#projects" onclick="goToSection('projects'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/projects.svg" alt="projects" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">Projects</span>
-          </a>
-        </div>
-        <div class="relative group">
-          <a href="#skills" onclick="goToSection('skills'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/skills.svg" alt="skills" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">Skills</span>
-          </a>
-        </div>
-        <div class="relative group">
-          <a href="#socials" onclick="goToSection('socials'); return false;" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700">
-            <img src="assets/icons/sidebar/socials.svg" alt="socials" class="w-10 h-10">
-            <span class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap">Socials</span>
-          </a>
+  <body
+    class="inset-0 flex items-center justify-center text-white bg-black font-courier"
+  >
+    <nav
+      class="fixed left-auto right-auto z-50 flex items-center top-4 sm:h-screen sm:right-5"
+    >
+      <div
+        class="m-auto border-4 border-gray-500 sm:py-10 bg-blue-950 bg-opacity-70 rounded-3xl"
+      >
+        <div class="flex flex-row items-center py-2 sm:flex-col">
+          <div class="relative group">
+            <a
+              href="#loading"
+              onclick="goToSection('loading'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/home.svg"
+                alt="home"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >Home</span
+              >
+            </a>
+          </div>
+          <div class="relative group">
+            <a
+              href="#welcome"
+              onclick="goToSection('welcome'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/wave.svg"
+                alt="welcome"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >Welcome</span
+              >
+            </a>
+          </div>
+          <div class="relative group">
+            <a
+              href="#about"
+              onclick="goToSection('about'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/about.svg"
+                alt="about"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >About</span
+              >
+            </a>
+          </div>
+          <div class="relative group">
+            <a
+              href="#projects"
+              onclick="goToSection('projects'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/projects.svg"
+                alt="projects"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >Projects</span
+              >
+            </a>
+          </div>
+          <div class="relative group">
+            <a
+              href="#skills"
+              onclick="goToSection('skills'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/skills.svg"
+                alt="skills"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >Skills</span
+              >
+            </a>
+          </div>
+          <div class="relative group">
+            <a
+              href="#socials"
+              onclick="goToSection('socials'); return false;"
+              class="flex items-center justify-center p-2 rounded-full hover:bg-gray-700"
+            >
+              <img
+                src="assets/icons/sidebar/socials.svg"
+                alt="socials"
+                class="w-10 h-10"
+              />
+              <span
+                class="absolute left-[-90px] top-1/2 transform -translate-y-1/2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 rounded-md whitespace-nowrap"
+                >Socials</span
+              >
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-</nav>
+    </nav>
 
+    <section
+      class="flex flex-col items-center h-screen gap-12 mt-20 sm:mt-0 md:gap-24 align-center"
+      id="loading"
+    >
+      <div class="flex flex-col items-center pt-28 md:pt-32">
+        <img src="assets/logo.png" alt="logo" class="h-60 w-60" />
+        <h1 class="mt-10 text-4xl font-bold text-center">Eddie Bian</h1>
+        <h1 class="text-xl font-bold text-center">(aka Murder of Codes)</h1>
+      </div>
+      <div
+        class="flex items-center w-40 ml-auto mr-auto rounded-full sm:w-96 bg-dark-gray align-center"
+      >
+        <div
+          id="progress-bar"
+          class="h-2.5 bg-light-graye rounded-full w-0"
+        ></div>
+      </div>
+      <div class="flex flex-col items-center mt-6 align-center">
+        <p>Scroll</p>
+        <img
+          src="assets/icons/arrow.svg"
+          alt="scroll-down"
+          class="h-12 mt-2 animate-move-down-up"
+        />
+      </div>
+    </section>
 
-
-
-
-
-  
-  <section class="flex flex-col items-center h-screen gap-12 mt-20 sm:mt-0 md:gap-24 align-center" id="loading">
-    <div class="flex flex-col items-center gap-10 pt-28 md:pt-32">
-      <img src="assets/logo.png" alt="logo" class="h-60 w-60">
-      <h1 class="text-4xl font-bold text-center">
-        Murder of Codes
+    <section
+      id="welcome"
+      class="flex-col items-center h-screen mt-20 text-center mx-96 align-center sm:mt-0"
+    >
+      <img
+        src="assets/icons/desktop.svg"
+        alt="desktop"
+        id="desktop"
+        class="absolute justify-center hidden mx-auto mt-20 sm:flex align-center"
+      />
+      <img
+        src="assets/icons/phone.svg"
+        alt="phone"
+        id="desktop"
+        class="absolute flex justify-center mx-auto mt-20 sm:hidden align-center"
+      />
+      <h1
+        class="mt-32 text-6xl font-bold text-greene disapere"
+        id="welcome-text"
+      >
+        Welcome
       </h1>
-    </div>
-    <div class="flex items-center w-40 ml-auto mr-auto rounded-full sm:w-96 bg-dark-gray align-center">
-      <div id="progress-bar" class="h-2.5 bg-light-graye rounded-full w-0"></div>
-    </div>
-    <div class="flex flex-col items-center mt-6 align-center">
-      <p>Scroll</p>
-      <img src="assets/icons/arrow.svg" alt="scroll-down" class="h-12 mt-2 animate-move-down-up">
-    </div>
-  </section>
-
-  <section id="welcome" class="flex-col items-center h-screen mt-20 text-center mx-96 align-center sm:mt-0">
-    <img src="assets/icons/desktop.svg" alt="desktop" id="desktop"
-      class="absolute justify-center hidden mx-auto mt-20 sm:flex align-center">
-    <img src="assets/icons/phone.svg" alt="phone" id="desktop"
-      class="absolute flex justify-center mx-auto mt-20 sm:hidden align-center">
-    <h1 class="mt-32 text-6xl font-bold text-greene disapere" id="welcome-text">Welcome</h1>
-    <div class="mt-12 text-center sm:-ml-32 w-52 sm:text-left sm:w-80 disapere" id="text-animation">
-      <h2 class="text-4xl font-bold">I'm Eddie</h2>
-      <div class="flex flex-row mt-5 font-semibold">
-        <h3>A&nbsp;</h3>
-        <p class="header-sub-title" id="word"></p>
-        <span class="caret"
-          style="animation: blink 1s step-end infinite; background-color: hsla(1, 1%, 100%, 1);">|</span>
-      </div>
-    </div>
-    </div>
-    <p class="absolute top-0 flex flex-col w-screen h-screen text-lg font-bold text-left sm:text-6xl overflow-clip text-dark-greene flex-nowrap text-nowrap"
-      id="onezero"></p>
-  </section>
-
-  <section id="computer" class="relative flex-col w-screen h-screen bg-white pt-36">
-    <h1 class="pt-5 pb-3 mx-auto text-5xl font-bold text-black">Languages</h1>
-    <div class="flex flex-row flex-wrap gap-10 px-5 pt-10 overflow-scroll text-black button-container">
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('python')">
-        <img src="assets/python.png" alt="python">
-        <button>Python</button>
-      </div>
-      
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('html')">
-        <img src="assets/css.png" alt="css">
-        <button>HTML</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('css')">
-        <img src="assets/css.png" alt="css">
-        <button>CSS</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('javascript')">
-        <img src="assets/javascript.png" alt="javascript">
-        <button>JavaScript</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('csharp')">
-        <img src="assets/csharp.png" alt="csharp">
-        <button>C#</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('flask')">
-        <img src="assets/flask.png" alt="flask">
-        <button>Flask</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('java')">
-        <img src="assets/java.png" alt="java">
-        <button>Java</button>
-      </div>
-
-      <div class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500" onclick="insertText('mysql')">
-        <img src="assets/mysql.png" alt="mysql">
-        <button>MySQL</button>
-      </div>
-      </div>
-    </div>
-
-    <div id="terminal-container" class="absolute bottom-0 w-screen text-black">
-      <div class="flex flex-row">
-        <div class="px-3 text-white bg-565656">Terminal
-          <hr>
-        </div>
-        <div class="w-screen bg-1B1B1B"></div>
-      </div>
-
-      <div class="w-screen h-64 py-4 pl-4 overflow-y-hidden terminal bg-565656" id="terminal">
-        <div class="flex input-line" id="input-terminal">
-          <span class="text-lg text-greene">~/Skills &gt;&nbsp;</span><input type="text" id="input"
-            class="flex-1 text-white border-none outline-none bg-565656" autofocus autocomplete="off">
+      <div
+        class="mt-12 text-center sm:-ml-32 w-52 sm:text-left sm:w-80 disapere"
+        id="text-animation"
+      >
+        <h2 class="text-4xl font-bold">I'm Eddie</h2>
+        <div class="flex flex-row mt-5 font-semibold">
+          <h3>A&nbsp;</h3>
+          <p class="header-sub-title" id="word"></p>
+          <span
+            class="caret"
+            style="
+              animation: blink 1s step-end infinite;
+              background-color: hsla(1, 1%, 100%, 1);
+            "
+            >|</span
+          >
         </div>
       </div>
-    </div>
-  </section>
+      <p
+        class="absolute top-0 flex flex-col w-screen h-screen text-lg font-bold text-left sm:text-6xl overflow-clip text-dark-greene flex-nowrap text-nowrap"
+        id="onezero"
+      ></p>
+    </section>
 
-  <section id="projects"
-    class="absolute flex-col items-center w-screen h-screen ml-auto mr-auto text-center text-black top-full mx-96 align-center mt-52">
-    <img src="assets/icons/bottom-desktop.svg" alt="bottom-desktop" class="z-10 ml-auto mr-auto w-52">
-    <div class="w-full h-screen pt-6 pb-4 bg-white">
-      <h2 class="text-4xl font-bold">My Projects</h2>
-      <div class="flex flex-col justify-center ml-auto mr-auto sm:flex-row gap-11">
-        <div>
-          <h3 class="text-3xl">WorkFlex</h3>
-          <img src="assets/workflex.png" alt="workflex" class="transition -rotate-5 w-giga hover:rotate-6">
+    <section
+      id="computer"
+      class="relative flex-col w-screen h-screen bg-white pt-36"
+    >
+      <h1 class="pt-5 pb-3 mx-auto text-5xl font-bold text-black">Languages</h1>
+      <div
+        class="flex flex-row flex-wrap gap-10 px-5 pt-10 overflow-scroll text-black button-container"
+      >
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('python')"
+        >
+          <img src="assets/python.png" alt="python" />
+          <button>Python</button>
         </div>
-        <div>
-          <h3 class="text-3xl">Ragnohacks</h3>
-          <img src="assets/ragnohacks.png" alt="ragnohacks" class="transition rotate-1 w-giga hover:-rotate-3">
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('html')"
+        >
+          <img src="assets/css.png" alt="css" />
+          <button>HTML</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('css')"
+        >
+          <img src="assets/css.png" alt="css" />
+          <button>CSS</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('javascript')"
+        >
+          <img src="assets/javascript.png" alt="javascript" />
+          <button>JavaScript</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('csharp')"
+        >
+          <img src="assets/csharp.png" alt="csharp" />
+          <button>C#</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('flask')"
+        >
+          <img src="assets/flask.png" alt="flask" />
+          <button>Flask</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('java')"
+        >
+          <img src="assets/java.png" alt="java" />
+          <button>Java</button>
+        </div>
+
+        <div
+          class="flex flex-row h-24 gap-4 px-3 py-3 text-3xl font-bold transition-colors border-4 border-solid cursor-pointer border-greene hover:border-red-500"
+          onclick="insertText('mysql')"
+        >
+          <img src="assets/mysql.png" alt="mysql" />
+          <button>MySQL</button>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <section id="logout" class="absolute top-0 flex flex-col items-center justify-center w-full h-screen bg-black">
-    <div class="flex flex-col items-center gap-10">
-      <img src="assets/logo.png" alt="logo" class="rounded-full h-60 w-60">
-      <h1 class="text-4xl font-bold text-center text-white">
-        Logging Out
-      </h1>
-    </div>
-    <div class="flex w-1/2 mt-10 rounded-full bg-dark-gray">
-      <div id="progress-bar-2" class="h-2.5 bg-light-graye rounded-full w-full" style="width: 100%;"></div>
-    </div>
-    </div>
-  </section>
-  
 
-  <section id="socials" class="absolute inset-0 flex flex-col items-center justify-center gap-32 text-center bg-black">
-    <h1 class="text-4xl font-bold text-white">
-      Logged Out
-    </h1>
-    <div class="flex flex-row justify-center gap-10 sm:gap-16 w-80 sm:w-full">
-      <a href="mailto:eddiewird@gmail.com" target="_blank">
-        <img src="assets/mail.svg" alt="mail" class="w-32 h-32">
-      </a>
-      <a href="https://github.com/B-Eddie" target="_blank">
-        <img src="assets/github.svg" alt="github" class="w-32 h-32">
-      </a>
-      <a href="https://www.linkedin.com/in/eddiebian/" target="_blank">
-        <img src="assets/linkedin.svg" alt="linkedin" class="w-32 h-32">
-      </a>
-      <a href="https://www.instagram.com/eddie.bian/" target="_blank">
-        <img src="assets/instagram.svg" alt="instagram" class="w-32 h-32">
-      </a>
-    </div>
-    <h1 class="text-white">
-      © 2024 Eddie Bian<br>All Rights Reserved
-    </h1>
-  </section>
-  
-</body>
-<script src="script.js"></script>
-<script src="terminal.js"></script>
+      <div
+        id="terminal-container"
+        class="absolute bottom-0 w-screen text-black"
+      >
+        <div class="flex flex-row">
+          <div class="px-3 text-white bg-565656">
+            Terminal
+            <hr />
+          </div>
+          <div class="w-screen bg-1B1B1B"></div>
+        </div>
 
+        <div
+          class="w-screen h-64 py-4 pl-4 overflow-y-hidden terminal bg-565656"
+          id="terminal"
+        >
+          <div class="flex input-line" id="input-terminal">
+            <span class="text-lg text-greene">~/Skills &gt;&nbsp;</span
+            ><input
+              type="text"
+              id="input"
+              class="flex-1 text-white border-none outline-none bg-565656"
+              autofocus
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="projects"
+      class="absolute flex-col items-center w-screen h-screen ml-auto mr-auto text-center text-black top-full mx-96 align-center mt-52"
+    >
+      <img
+        src="assets/icons/bottom-desktop.svg"
+        alt="bottom-desktop"
+        class="z-10 ml-auto mr-auto w-52"
+      />
+      <div class="w-full h-screen pt-6 pb-4 bg-white">
+        <h2 class="text-4xl font-bold">My Projects</h2>
+        <div
+          class="flex flex-col justify-center ml-auto mr-auto sm:flex-row gap-11"
+        >
+          <div>
+            <h3 class="text-3xl">WorkFlex</h3>
+            <img
+              src="assets/workflex.png"
+              alt="workflex"
+              class="transition -rotate-5 w-giga hover:rotate-6"
+            />
+          </div>
+          <div>
+            <h3 class="text-3xl">Ragnohacks</h3>
+            <img
+              src="assets/ragnohacks.png"
+              alt="ragnohacks"
+              class="transition rotate-1 w-giga hover:-rotate-3"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="logout"
+      class="absolute top-0 flex flex-col items-center justify-center w-full h-screen bg-black"
+    >
+      <div class="flex flex-col items-center gap-10">
+        <img src="assets/logo.png" alt="logo" class="rounded-full h-60 w-60" />
+        <h1 class="text-4xl font-bold text-center text-white">Logging Out</h1>
+      </div>
+      <div class="flex w-1/2 mt-10 rounded-full bg-dark-gray">
+        <div
+          id="progress-bar-2"
+          class="h-2.5 bg-light-graye rounded-full w-full"
+          style="width: 100%"
+        ></div>
+      </div>
+    </section>
+
+    <section
+      id="socials"
+      class="absolute inset-0 flex flex-col items-center justify-center gap-32 text-center bg-black"
+    >
+      <h1 class="text-4xl font-bold text-white">Logged Out</h1>
+      <div class="flex flex-row justify-center gap-10 sm:gap-16 w-80 sm:w-full">
+        <a href="mailto:eddiewird@gmail.com" target="_blank">
+          <img src="assets/mail.svg" alt="mail" class="w-32 h-32" />
+        </a>
+        <a href="https://github.com/B-Eddie" target="_blank">
+          <img src="assets/github.svg" alt="github" class="w-32 h-32" />
+        </a>
+        <a href="https://www.linkedin.com/in/eddiebian/" target="_blank">
+          <img src="assets/linkedin.svg" alt="linkedin" class="w-32 h-32" />
+        </a>
+        <a href="https://www.instagram.com/eddie.bian/" target="_blank">
+          <img src="assets/instagram.svg" alt="instagram" class="w-32 h-32" />
+        </a>
+      </div>
+      <h1 class="text-white">© 2024 Eddie Bian<br />All Rights Reserved</h1>
+    </section>
+  </body>
+  <script src="script.js"></script>
+  <script src="terminal.js"></script>
 </html>
