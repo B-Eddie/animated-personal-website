@@ -270,10 +270,7 @@ function changeShowText() {
       const newSpan = document.createElement("span");
       newSpan.innerHTML = Math.random() > 0.5 ? 1 : 0;
 
-      if (
-        i === rowone &&
-        j === Math.floor(screenWidth / (col))
-      ) {
+      if (i === rowone && j === Math.floor(screenWidth / col)) {
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-greene");
         if (textChangeTrueFalse) {
@@ -284,11 +281,8 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (
-        i === rowtwo &&
-        j === Math.floor(screenWidth / (col))
-      ) {
-        const text = "I'm a 15 year old interested in";
+      if (i === rowtwo && j === Math.floor(screenWidth / col)) {
+        const text = "I'm a 16 year old interested in";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
         if (textChangeTrueFalse) {
@@ -299,10 +293,7 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (
-        i === rowthree &&
-        j === Math.floor(screenWidth / (col))
-      ) {
+      if (i === rowthree && j === Math.floor(screenWidth / col)) {
         const text = "coding, design, and AI. I love";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -314,10 +305,7 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (
-        i === rowfour &&
-        j === Math.floor(screenWidth / (col))
-      ) {
+      if (i === rowfour && j === Math.floor(screenWidth / col)) {
         const text = "playing sports, coding, and";
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
@@ -329,10 +317,7 @@ function changeShowText() {
         textArray[i].appendChild(specificSpan);
         h = true;
       }
-      if (
-        i === rowfive &&
-        j === Math.floor(screenWidth / (col))
-      ) {
+      if (i === rowfive && j === Math.floor(screenWidth / col)) {
         const text = `hackathons!`;
         const specificSpan = document.createElement("span");
         specificSpan.classList.add("text-middle-greene");
